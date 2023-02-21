@@ -41,8 +41,9 @@ A value in JS is always of a certain type. In JS there are eight data types, sev
 
 #### Objects 
 
-The object type is special. As they can contain multiple values, are mutable and are more complex than the primitive data types. Objects are used to store keyed collections of various data and more complex entities. 
- 
+The object type is special. As they can contain multiple values, are mutable and are more complex than the primitive data types. Objects are used to store keyed collections of various types of data and more complex entities. 
+
+In JavaScript both arrays and functions are objects, meaning they can be assigned to variables, passed as arguments to functions, and used like any other object.
 
 ### Primitive Data Types
 
@@ -133,7 +134,7 @@ A Symbol is a unique and immutable primitive value and may be used as the key of
 
 Operators are used to assign values, compare values, perform arithmetic operations and more.
 
-Math Operators
+#### Math Operators
 ```
 + //Addition
 - //Subtraction 
@@ -161,7 +162,7 @@ let counter = 2;
 console.log(++counter); //3 Returns the incremented value.
 ```
 
-Comparison Operators 
+#### Comparison Operators 
 ```
 1 < 2 //Less than
 2 > 1 //Greater than
@@ -173,7 +174,7 @@ Comparison Operators
 1 !== 2 //Not equal strict without type coercion
 ```
 
-Logical Operators - boolean logic
+#### Logical Operators - boolean logic
 ```
 && - The and operator checks if the conditions on its left and right are true before running
 || - The or operator Only requires one condition to be true
@@ -224,4 +225,58 @@ We can check if a value is truthy or falsey using a conditional.
 if(value) //will run if value is truthy.
 if(!value) //Will run if value is falsey.
 value ? /*will run if truthy*/ : /*will run if falsey*/
-```   
+``` 
+
+### Logic and conditionals
+Code is run in order from the first line in a file to the last line. Structures like conditonals, loops and functions allow us to change the control flow. 
+
+Conditional statements tell the computer to execute certain actions, provided certain conditions are met. They allow a program to make decisions based on different inputs. 
+Specifically they execute a specific action based on the results of an outcome of true or false.
+
+
+#### if else statements
+
+Conditional statements will perform different actions based on different conditions. They are useful for when you need to perform different actions based on different conditions. 
+
+```
+const colour = 'red';
+if (colour === 'red') {
+    console.log('The colour is red.');
+} else if (colour === 'blue') {
+    console.log('The colour is blue');
+} else {
+    console.log('The colour is neither red or blue');
+}
+```
+
+The if statement evaluates the condtion in its parentheses and converts the result to a boolean. If true it executes a block of code. 
+
+
+The else if statement is used when we need to test different conditions if the first condition is false.
+
+The else statement is to specify a block of code to be executed if the previous conditions are false.
+
+#### Switch statements
+
+Switch Statements provide an alternative syntax to if else statements. A switch statement is useful when having to write many else if statements. If a break is ommited from a case the following case statements are executed until a break is encountered.
+
+```
+const groceryItem = 'tomato';
+switch (groceryItem) {
+  case 'onion':
+    console.log('Onions are £0.30');
+    break;
+  case 'lime':
+    console.log('Limes are £0.60');
+    break;
+  case 'pepper':
+    console.log('Peppers are £0.45');
+    break;
+  case 'tomato':
+    console.log('Tomatos are £0.50');
+    break;
+  default:
+    console.log('Invalid Item');
+}
+```
+If the case matches with the expression, then the code within the case will run. If no case matches then the default will run instead.
