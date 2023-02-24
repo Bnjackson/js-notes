@@ -227,14 +227,14 @@ if(!value) //Will run if value is falsey.
 value ? /*will run if truthy*/ : /*will run if falsey*/
 ``` 
 
-### Logic and conditionals
+## Logic and Conditionals
 Code is run in order from the first line in a file to the last line. Structures like conditonals, loops and functions allow us to change the control flow. 
 
 Conditional statements tell the computer to execute certain actions, provided certain conditions are met. They allow a program to make decisions based on different inputs. 
 Specifically they execute a specific action based on the results of an outcome of true or false.
 
 
-#### if else statements
+### if else statements
 
 Conditional statements will perform different actions based on different conditions. They are useful for when you need to perform different actions based on different conditions. 
 
@@ -256,7 +256,7 @@ The else if statement is used when we need to test different conditions if the f
 
 The else statement is to specify a block of code to be executed if the previous conditions are false.
 
-#### Switch statements
+### Switch statements
 
 Switch Statements provide an alternative syntax to if else statements. A switch statement is useful when having to write many else if statements. If a break is ommited from a case the following case statements are executed until a break is encountered.
 
@@ -280,3 +280,70 @@ switch (groceryItem) {
 }
 ```
 If the case matches with the expression, then the code within the case will run. If no case matches then the default will run instead.
+
+
+## Loops
+
+A loop is a programming tool that repeats a set of instructions until a specified condition called a stopping condition is reached. Loops iterate or repeat an action until a specific condition is met. When the condition is met, the loop stops and the computer moves on.
+
+When programming we often need to repeat actions. Instead of having to write the same code again and again, wasting time and making the code harder to read through. We can use loops to repeat instructions multiple times until a condition is met.
+
+If we are not careful we can create infinite loops that will slow down or crash the program. 
+To insure this does not happen we should use stopping conditions that stop the loop once we have reached the specified condition. We can also use the break keyword to stop a loop even if the stopping condition is not met. 
+
+### for loops 
+
+A typical for loop includes an iterator variable that usually appears in all three expressions. The iterator variable is intialized checked against the stopping condition, and assigned a new value on each loop iteration. Iterator variables can have any name, but its best practise to use a descriptive names.
+
+A for loop contains three expressions seperated by ; inside the ()
+- An intialization starts the loop and can also be used to declare the iterator variable.
+- A stopping condition is the condition that the iterator variable is evaluated against - if the condition evaluates to true the code block will run, and if it evaluates to false the code will stop.
+- An iteration statement is used to update the iterator variable on each loop.
+
+```
+for (let = counter = 0; //intialization start of the loop and declared as variable.
+   counter < 4; //Stopping condition iterator is evaluated against this.
+   counter++) { //iteration statement used to update the iterator.
+   console.log(counter);
+}
+//It is a naming convention to name our counting variables i
+```
+
+### for...in loops
+
+Looping through arrays is one of the most common uses of for loops. However we cannot loop through an object as we would an array, becuase the key value pairs in objects are not ordered. we have to use the for...in loop.
+
+```
+const object = { a: 1, b: 2, c: 3 };
+
+for (const property in object) {
+    console.log(`${property}: ${object[property]}`);
+}
+```
+
+The for...in loop iterates through the properties of an object. The variable is used to access the value of the property.
+
+### While loop
+
+While the condition is true the loop will execute. while loops are used when we dont know how many times the loop should run. While loops can create infinite loops that should be avoided as they can use too much processing power.
+
+```
+let i = 0;
+    while (i < 4) {
+    console.log(i);
+    i++;
+}
+```
+
+### do...while loops 
+
+In some cases you want a piece of code to run at least once and then loop based on specific condition after its intial run. A do...while statement will run until a specified condition is no longer met.
+
+```
+let i = 0;
+do {
+    alert(i);//The body of the loop will execute at least once regardless if true.
+    i++;
+} while (i < 3);
+```
+
