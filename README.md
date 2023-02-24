@@ -45,6 +45,28 @@ The object type is special. As they can contain multiple values, are mutable and
 
 In JavaScript both arrays and functions are objects, meaning they can be assigned to variables, passed as arguments to functions, and used like any other object.
 
+Objects are unordered sequences of key-value pairs the keys are called "properties" they are arbitary strings and the values are any data type, each property can be used to look up(reference) the value associated with it.
+
+Objects can be used to organize code better instead of using multiple variables we can store things in a single object. Objects are usually created to represent entities of the real world like users, items, orders and so on.
+
+```
+const john = { // an object
+  firstName:'John', //by key 'firstName' value 'john'
+  lastName:'Davies', //by key 'lastName' value 'Davies'
+  age:24,//by key 'age' store value 24
+  family: ['Jane', 'Mark', 'Emily'],//Objects can store arrays
+  'is Married': false, //We can create multiword propety names they must be quoted.
+};
+
+console.log(john.firstName); //We can access objects using dot notation
+const x = 'age';
+console.log(john[x]); //Will print 24 useful logic for accessing data from an array.
+john.job = 'programmer';//We can add to the object using name.key = value
+john.age = 29;//We can also assign new values to the properties;
+john["Favourite Film"] = Big Lebowski; //We use [] to create multiword propety names.
+delete john.job; //We can delete a property from an object with the delete operator.
+```
+
 ### Primitive Data Types
 
 Primitive data types are values that can only contain a single thing. All primitive types are immutable - meaning they cannot be changed after it is created. JavaScript allows us to work with primitive data types as if they were objects. This allows us to access methods that work via tempoary objects that are destroyed after the method runs.
