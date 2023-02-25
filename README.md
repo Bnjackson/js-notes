@@ -303,6 +303,58 @@ switch (groceryItem) {
 ```
 If the case matches with the expression, then the code within the case will run. If no case matches then the default will run instead.
 
+## Arrays 
+
+Primitive data types can only store 1 value at a time. If we need to store 100 values, we would need 100 seperate variables. To handle such situations programming languages provide a solution, arrays. An array is a data structure that can store a collection of data under a single variable name.
+
+Arrays are a type of object, howver unlike objects they are numbered. Arrays are zero-indexed meaning that the first item in a an array starts at index 0 and the last item is at the value of the array's length property minus 1. 
+
+Arrays in JavaScript can store a collection of various data types and objects unlike in some other languages. 
+
+Arrays are useful for storing a list of something: users, goods, HTML elements etc. Arrays provide ways to manage the order of elements unlike objects.
+
+We create an array using [] and we assign it to a named variable. Each item in an array has a numbered position.
+
+```
+let numbersArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+console.log(numbersArr[0]) //We can access individual items in an array using bracket notation with the items index. 
+numbersArr[10] = 11; //We can add or change the items in an array.
+numbersArr.length; //The return property returns the length of an array.
+```
+
+### Nested Arrays
+
+We can store arrays in other arrays. When an array contains another array it is known as a nested array. To access nested arrays we use bracket notation with the index value.
+
+```
+nestedArr[1]; // Output: [2, 3]. nestedArr[1] will get the value of the element in index 1 which is array [2, 3].
+
+nestedArr[1][0]; // Returns: 2. We can chain on more index values.
+```
+
+
+### Array Methods
+
+There are some useful methods for arrays including. 
+
+```
+arr.push('newElement'); //.push() adds an element to the end of an array.
+arr.unshift('newElement); //.unshift() adds an element to the beggining of an array.
+arr.pop() //.pop() removes the last element from an array. The removed element can be assigned to a variable.
+arr.shift() //.shift() removes the first element from an array. The removed element can be assigned to a varaible/
+arr.splice(0, 2, 'item1', 'item2') //.splice() is used to add and remove items from an array. Thr first parameter(0) defines the position where new elements should be added, the second parameter defines how many elements should be removed(2). The rest of the paramaters ('item1', 'item2') define the new elements to be added.
+arr.join(' ') //join.() converts an array into a string of array values. It also allows us to specify the seperator between the array values.  
+let myFamily = myParents.concat(mySiblings); //.concat() creates a new arrray by merging(concatenating) existing arrays. The concat method can take any number of arrays or strings as arguments. The method does also not change the existing arrays, but return a new array.
+
+```
+
+```
+
+```
+
+### Iterator Array Methods 
+
+
 
 ## Loops
 
@@ -368,4 +420,18 @@ do {
     i++;
 } while (i < 3);
 ```
+
+### Nested loops 
+
+When we have a loop running inside another loop that is called a nested loop. One use for nested loops is to compare the elements in two arrays. For each round of the outer loop, the inner loop will run completely.
+
+```
+for (i = 0; i < outerLimit; i++) {
+  for (j = 0; j < innerLimit; j++) {
+    // code to be executed
+  }
+}
+```
+In the above code, for each iteration of the outer loop the inner loop will run as many times as the value of innerLimit. 
+
 
