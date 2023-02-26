@@ -75,6 +75,19 @@ The primitive data types are null, undefined, boolean, number, bigint, string an
 
 All primitive types, except null, can be tested by the typeof operator. typeof null returns "object", so one has to use === null to test for null.
 
+```
+typeof "John"                 // Returns "string"
+typeof 3.14                   // Returns "number"
+typeof NaN                    // Returns "number"
+typeof false                  // Returns "boolean"
+typeof [1,2,3,4]              // Returns "object"
+typeof {name:'John', age:34}  // Returns "object"
+typeof new Date()             // Returns "object"
+typeof function () {}         // Returns "function"
+typeof myCar                  // Returns "undefined" *
+typeof null                   // Returns "object"
+```
+
 #### Number 
 
 Numbers represent both integers and floating point numbers. There are also special numeric values including infinity, -Infinity and NaN.
@@ -332,8 +345,9 @@ nestedArr[1]; // Output: [2, 3]. nestedArr[1] will get the value of the element 
 nestedArr[1][0]; // Returns: 2. We can chain on more index values.
 ```
 
-
 ### Array Methods
+ 
+Methods that modify the original array are known as mutator methods, and methods that return a new value or representation are reffered to as accessor methods. Methods that operate on every item in an array, one at a time are known as itteration methods.
 
 There are some useful methods for arrays including. 
 
@@ -348,13 +362,121 @@ let myFamily = myParents.concat(mySiblings); //.concat() creates a new arrray by
 
 ```
 
-```
-
-```
-
 ### Iterator Array Methods 
 
+There are several built in array methods that allow us to iterate over arrays.
+These built-in methods help us iterate through arrays and are called “iteration methods” or “iterators”. Iterators are methods that are called on arrays to manipulate elements and return some values.
 
+Using methods that iterate over an array can often result in more concise, expressive, and readable code than using traditional loops in JavaScript. They can also simplify common operations such as transforming, filtering, and aggregating arrays.
+
+#### .forEach()
+
+This method executes a block of code or a function for each element in an array. 
+
+```
+let namesArray = ['Sarah', 'John', 'Arthur', 'Susie'];
+
+namesArray.forEach((element) => {
+    console.log(element);
+});
+```
+
+When you need to perform an operation on each element of an array: Using the forEach() method can be a more concise way to perform an operation on each element of an array than using a traditional for loop. For example, the above code logs each element of an array to the console:
+
+#### .map()
+
+This method returns a new array with the updated elements after calling a callback function on every element in the array.
+
+```
+let uppercaseNames = namesArray.map((element) => {
+    return element.toUppercase();
+});
+```
+
+The original array doesn’t change. This is used to alter each item individually to create a new transformed array.
+
+#### .filter() 
+
+The .filter() method checks each element in an array to see if it meets a condition. It returns a new array whith the elements that meet the condition. 
+
+```
+let shortNamesArray = namesArray.filter((element) => element.length < 5);
+```
+
+The callback function for the .filter() method should return true or false depending on if the element length is shorter than 5.
+The elements that cause the callback function to return true are added to the new array.
+
+#### .find() 
+
+This method returns the value of the first element of an array which satisfies a condition. The method will return undefined if none of the elements satisfies this condition.
+
+```
+let findJohn = namesArray.find((element) => element === 'John');
+```
+
+#### .findIndex() 
+
+Similar to find method. Their difference is that this method returns the index of the first element of an array which satisfies the condition set. The method will return -1 if none of the elements satisfies the condition.
+
+```
+let findJohnIndex = namesArray.findIndex((element) => element === 'John');
+```
+
+#### .reduce()
+
+The reduce method is used to reduce the array to a single value. It executes a provided function for each value of the array (from left-to-right). The return value of the function is stored in an accumulator.
+
+```
+let allNames = namesArray.reduce(
+    (all, name) => all += ' ' + name
+);
+```
+
+In this example, Reduce accepts two parameters, the accumulator (all) and the current element (name). The reduce method iterates through each element in the array as a for-loop. In the accumulator, we store the concatenated string.
+
+#### .some()
+
+The .some() method tests if some of the elements in the array pass a condition. It will return true if any values meet the condtion and false if none do. The return value is a boolean.
+
+```
+let isString = namesArray.some(
+    (name) => typeof name === 'number';
+);
+// Expected output: false
+```
+
+#### .every()
+
+The .every() method tests whether all elements in the array pass the test implemented by the provided function. It returns a boolean value.
+
+```
+let allStrings = namesArray.every(
+    (name) => typeof name === 'string'
+); 
+// Expected output: true
+```
+
+#### .sort()
+
+The .sort() method sorts the elements in an array alphabetically and in ascending order and returns the the newly sorted array. 
+
+```
+const months = ['March', 'Jan', 'Feb', 'Dec'];
+months.sort();
+console.log(months);
+// Expected output: Array ["Dec", "Feb", "Jan", "March"]
+```
+
+This method works well for strings. However when we try to sort numbers like strings, 25 is sorted higher than 100, because 2 is greater than 1. Because of this sort() method will produce incorrect results when sorting numbers. We can use a compare function to fix this.
+
+```
+let numbersArr = [100, 45, 62, 76, 909, 23, 97, 53, 32, 16, 36, 111];
+let sortedArr = numbersArr.sort(
+    (a, b) => a - b
+);
+```
+
+The compare function takes in two numbers at a time e.g. 100 - 45. As this result is a positive number, 100 will be sorted ahead of 45. If the result was negative then outcome would be reversed. This process continues until all numbers are sorted.  
 
 ## Loops
 
