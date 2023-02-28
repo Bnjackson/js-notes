@@ -269,7 +269,7 @@ Conditional statements tell the computer to execute certain actions, provided ce
 Specifically they execute a specific action based on the results of an outcome of true or false.
 
 
-### if else statements
+### if...else statements
 
 Conditional statements will perform different actions based on different conditions. They are useful for when you need to perform different actions based on different conditions. 
 
@@ -315,6 +315,18 @@ switch (groceryItem) {
 }
 ```
 If the case matches with the expression, then the code within the case will run. If no case matches then the default will run instead.
+
+### Ternary Operators
+
+Are the only JavaScript operator that takes three operands, a condition followed by a question mark (?) then an expression to execute if the condition is truthy follwed by a colon (:) and finally the expression to execute if the conditon is falsy. This operator is used as a alternative for the if...else statement.
+
+```
+const score = 75;
+
+const passingScore = score > 70 ? true : false;
+```
+
+Ternary operators allow you to write shorter and cleaner condtions. They are a good alternative for shorter if...else statements, but can make code hard to read if used as an alternative to longer conditionals.
 
 ## Arrays 
 
@@ -556,4 +568,71 @@ for (i = 0; i < outerLimit; i++) {
 ```
 In the above code, for each iteration of the outer loop the inner loop will run as many times as the value of innerLimit. 
 
+## Functions 
 
+Functions are one of the fundamental building blocks of JavaScript. A function in JavaScript is similar to a procedure a set of statements that performs a task or calculates a value, but for a procedure to qualify as a function, it should take some input and return an output where there is some obvious relationship between the input and the output. 
+
+A function is a reusable block of code. It is executed when something evokes it (calls it). They can be used with different arguments, to produce different results. 
+
+Functions can access internal variables and outer variables, however code outside the function cannot access any variables declared inside a function. 
+
+### function declaration
+
+One way to create a function is using function declarations. The function keyword goes first then, the function name, then the parameters, and between {} goes the function body.
+The function is called by its name followed by ().
+
+```
+function printMessage() {
+    console.log('Hello World!');
+}
+
+printMessage();
+```
+
+### function parameters 
+
+We can pass data into a function using parameters. A parameter is a named variable passed into a function. Parameter variables are used to import arguments into functions (when a value is imported into a function it is called an argument). If a parameter value is not provided then its value becomes undefined. 
+
+We can create default parameters for when a value is not passed into the function.  
+
+```
+function showMessage(message = 'no message given') {
+    console.log(message)
+}
+
+message();
+// expected output: no message given
+```
+
+#### rest parameter
+
+The rest parameter allows us to represent an indefinite number of arguments as an array. A function can be prefixed with ... which will cause all remaining arguments to be placed within a array.
+
+```
+function sum(...theArgs) {
+  return theArgs.reduce((previous, current) => {
+    return previous + current;
+  });
+}
+
+console.log(sum(1, 2, 3));
+// expected output: 6
+
+console.log(sum(1, 2, 3, 4));
+// expected output: 10
+
+```
+
+#### spread operator 
+
+ES6 introduced the spread operator, which allows us to expand arrays and other expressions in places where multiple parameters or elements are expected.
+
+```
+function sum(x, y, z) {
+  return x + y + z;
+}
+const arrayNumbers = [1, 2, 3];
+
+console.log(sum(...arrayNumbers));
+//expected output: 6
+```
