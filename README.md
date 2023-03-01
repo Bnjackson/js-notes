@@ -576,20 +576,12 @@ A function is a reusable block of code. It is executed when something evokes it 
 
 Functions can access internal variables and outer variables, however code outside the function cannot access any variables declared inside a function. 
 
-### function declaration
+A function should be short and do exactly what there name suggests. Two independent actions usually deserve two functions. Using several small functions over one large function is easier to test, debug and read. 
 
-One way to create a function is using function declarations. The function keyword goes first then, the function name, then the parameters, and between {} goes the function body.
-The function is called by its name followed by ().
+No matter what syntax is used to create a function, a function in JavaScript is a value 
 
-```
-function printMessage() {
-    console.log('Hello World!');
-}
 
-printMessage();
-```
-
-### function parameters 
+### Function parameters 
 
 We can pass data into a function using parameters. A parameter is a named variable passed into a function. Parameter variables are used to import arguments into functions (when a value is imported into a function it is called an argument). If a parameter value is not provided then its value becomes undefined. 
 
@@ -604,7 +596,7 @@ message();
 // expected output: no message given
 ```
 
-#### rest parameter
+#### Rest parameter
 
 The rest parameter allows us to represent an indefinite number of arguments as an array. A function can be prefixed with ... which will cause all remaining arguments to be placed within a array.
 
@@ -623,7 +615,7 @@ console.log(sum(1, 2, 3, 4));
 
 ```
 
-#### spread operator 
+#### Spread operator 
 
 ES6 introduced the spread operator, which allows us to expand arrays and other expressions in places where multiple parameters or elements are expected.
 
@@ -636,3 +628,74 @@ const arrayNumbers = [1, 2, 3];
 console.log(sum(...arrayNumbers));
 //expected output: 6
 ```
+
+### Return
+
+A function can return a value by using the return keyword in a function and then calling the function. 
+
+```
+function sum(a, b) {
+  return a + b;
+}
+
+let result = sum(1, 2);
+alert( result ); // 3
+```
+
+A function immediately stops at the point where return is called. 
+
+### naming a function 
+
+Functions are actions so their name is usually prefixed by a verb. It should be brief but descriptive, accurate and describe what the function does, so that someone who reads the code gets an indication of what the function does.
+
+For instance....
+show - shows something
+get - return a value
+calc - calculate something
+create - create something
+check - check something and retun a boolean
+push
+apply
+compute
+post
+
+### Function declaration
+
+The most commonly used way to create a function is using function declarations. The function keyword goes first then, the function name, then the parameters, and between {} goes the function body.
+The function is called by its name followed by ().
+
+```
+function printMessage() {
+    console.log('Hello World!');
+}
+
+printMessage();
+```
+
+Function declarations are hoisted meaning no matter where they are declared they are hoisted to the top of their scope.
+Function declarations can also be used as constructors and have a prototype property.
+
+
+### Function expressions 
+
+There are many different syntaxes for creating a function, so far we have only used function declarations. Another syntax for creating a function is called a function expression. A function expression is a function assigned to a variable. 
+
+```
+let printMessage() {
+    console.log("Hello World!);
+}
+```
+
+ Function expressions are not hoisted, which means that they must be defined before they are called. This makes function expressions useful for functions that are only used in specific parts of your code.
+
+
+### Arrow functions 
+
+There’s another very simple and concise syntax for creating functions, that’s often better than Function Expressions. its called arrow functions.
+
+```
+let printMessage = () => console.log('Hello World!');
+```
+
+Arrow functions have a very convenient syntax and are very useful for smaller functions, such as callbacks and one line functions. When there is no function body, and only a return value we can omit the return keyword as well as the brackets surrounding the code.
+
