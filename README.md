@@ -726,3 +726,46 @@ myButton.onclick = function() {
 Functions that operate on other functions, either by taking them as arguments or by returning them, are called higher-order functions. We call the function that gets passed in as parameters and invoked callback functions because they get called during the execution of the higher-order function.
 
 Its called a higher-order function because instead of strings, numbers or booleans it goes higher to operate on functions. 
+
+```
+function mapArray(arr, fn) {
+  const newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    newArr.push(fn(arr[i]));
+  }
+  return newArr;
+}
+
+const numbers = [1, 2, 3, 4, 5];
+const doubledNumbers = mapArray(numbers, (num) => num * 2);
+console.log(doubledNumbers); // [2, 4, 6, 8, 10]
+```
+
+In this example, mapArray is a higher-order function because it takes another function (fn) as an argument. The mapArray function applies the fn function to each element of the arr array and returns a new array containing the transformed values.
+
+In the example above, we pass an anonymous arrow function to mapArray that multiplies each element of the numbers array by 2, resulting in a new array with the values [2, 4, 6, 8, 10].
+
+### Callback functions 
+
+Functions are values so they can be passed as parameters to other functions. A function that is passed into another is commonly reffered to as a callback function: it is an argument that another function will "call back to" and execute when needed. 
+Functions can take more than one callback function as arguments which can be a useful way of composing behaviours. Passing functions as arguments to other functions is at the heart of functional programming. We can define program behavior primarily in terms of behaviors that are run, and less in terms of the data variables used. Callback functions are vital for interactivity: such as when using event listeners.
+
+```
+function doTogether(firstCallback, secondCallback){
+    firstCallback();  //execute the first function
+    secondCallback();  //execute the second function
+    console.log('at the same time!');
+}
+
+function patHead() {
+    console.log('pat your head');
+}
+
+function rubBelly() {
+    console.log('rub your belly');
+}
+
+//pass in the callbacks to do them together
+doTogether(patHead, rubBelly);
+```
+
