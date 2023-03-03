@@ -578,8 +578,7 @@ Functions can access internal variables and outer variables, however code outsid
 
 A function should be short and do exactly what there name suggests. Two independent actions usually deserve two functions. Using several small functions over one large function is easier to test, debug and read. 
 
-No matter what syntax is used to create a function, a function in JavaScript is a value 
-
+No matter what syntax is used to create a function, a function in JavaScript is a value. They can be passed to other functions, they can be made into methods, they can be stored in arrays or stored in variables.
 
 ### Function parameters 
 
@@ -699,3 +698,31 @@ let printMessage = () => console.log('Hello World!');
 
 Arrow functions have a very convenient syntax and are very useful for smaller functions, such as callbacks and one line functions. When there is no function body, and only a return value we can omit the return keyword as well as the brackets surrounding the code.
 
+We can also use arrow functions for longer more complex functions. But also have to use curly braces and the return keyword.
+
+```
+let add = (a, b) => {
+    let result = a + b;
+    return result;
+}
+
+sum(1, 2);
+```
+
+### Anonymous functions 
+
+An Anonymous function is a function without a name it wont do anything on its own. You generally use an Anonymous function with an event handler, so the function runs in response to an event such as a button being clicked.
+
+```
+const myButton = document.querySelector('button');
+
+myButton.onclick = function() {
+  console.log('Button has been clicked');
+}
+```
+
+### Higher-Order functions 
+
+Functions that operate on other functions, either by taking them as arguments or by returning them, are called higher-order functions. We call the function that gets passed in as parameters and invoked callback functions because they get called during the execution of the higher-order function.
+
+Its called a higher-order function because instead of strings, numbers or booleans it goes higher to operate on functions. 
