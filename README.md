@@ -794,3 +794,69 @@ When a variable is defined inside a block. That variable has block scope because
 #### Scope Pollution 
 
 Having too many global variables can cause problems in a program. Scope pollution is when we have too many global variables that exist in the global namespace. Scope pollution makes it difficult to keep track of our different variables and sets up potential accidents.
+
+## JavaScript Interactivity and the DOM 
+
+JavaScript allows us to modify just about every aspect of the page: content, styling, and its response to user interaction.
+
+### The Document Object Model (DOM)
+
+The Document Object Model or DOM for short is a tree-like structure that allows programmers to conceptualize hierarchy and access elements on a web page. The DOM is created when the page is loaded.
+The DOM is a logical tree-like Model that organizes a web page’s HTML Document as an Object. The DOM is seperate from JavaScript and is more of a link between the HTML webpage and the scripting language.
+
+#### Nodes 
+
+The DOM tree is made up of nodes which are intersecting points in a tree that contains data. In the DOM tree the top most node is called the root node and it represents the HTML document starting with the <html> tag followed by the <head>, <body> and <footer> tags. A parent node is the node above the closest connected node. A child node is the same but beneath the closest connected node. There are nine different types of node objects such as element and text. We can use the DOM to access a node's attributes such as its class, id and inline style.
+
+Everything in an HTML document is a node - nodes are objects that have many properties and methods attached to them. These properties and methods are the primary tools we use to manipulate our webpage with JavaScript.:
+- The entire document is a document node
+- Every HTML element is an element node
+- The text inside HTML elements are text nodes
+- Every HTML attribute is an attribute node(deprecated)
+- All comments are comment nodes
+
+### Using the DOM to interact with elements 
+
+#### Element.innerHTML
+
+Using the DOM we can modify the contents of an element aswell as it's attributes and properties. We can use the innerHTML property to add or modify elements.
+
+```
+document.body.innerHTML = "We can reassign the inner HTML of the body element.";
+document.body.innerHTML = "<h2>We can also assign a h2 element as a child inside of the body element.</h2>";
+```
+
+#### Element.querySelector 
+
+If we want to access a specific element we can use the querySelector method to access an element with CSS selectors such as tag, class or an ID. It will return the first element that matches the selector.
+
+```
+document.querySelector("p");
+document.querySelector(".class");
+document.querySelector("#id");
+```
+
+#### Element.querySelectorAll 
+
+.querySelectorAll is a method that returns a static nodeList representing a list of the documents elements that match the specified group of selectors. querySelectorAll can be used with a loop to apply styles, events or edit elements.
+
+```
+const paragraphs = document.querySelectorAll("p");
+
+for (let i = 0; i < paragraphs.length; i++) {
+  paragraphs[i].style.color = "red";// This will loop through all paragraph elements and set there color to red.
+}
+```
+
+#### Element.getElemnentBy 
+
+If we want to access elements directly we can use the getElementBy methods which will return a live HTML element object.
+
+```
+document.getElementById("ID");//The function only returns one ID as ID's should be unique.
+document.getElementsByClassName("CLASS");
+document.getElementsByTagName('ELEMENT-TYPE')
+//.getElementsByClassName and .getElementsByTagName both return an array-like collection of elements. To access individual elements you have to iterate over them.
+```
+
+
