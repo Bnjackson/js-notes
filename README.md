@@ -769,3 +769,28 @@ function rubBelly() {
 doTogether(patHead, rubBelly);
 ```
 
+### Blocks 
+
+A block is the code found inside a set of {}. Blocks help us group one or more statements together. Blocks are most often used with while, if...else and for statements.
+
+```
+{
+    //statements and declarations grouped within the block statement
+}
+```
+
+#### Scope 
+
+Scope is the context in which our variables are declared. We think about scope in relation to blocks because variables can exist either outside of or within these blocks.
+
+#### Global Scope
+
+Variables are declared outside of blocks. These variables are called global variables. Global variables are not bound inside a block, they can be accessed by any code in the program, including code in blocks.
+
+#### Block Scope
+
+When a variable is defined inside a block. That variable has block scope because it is only accesible to the lines of code within that block. Variables that are declared with block scope are known as local variables.
+
+#### Scope Pollution 
+
+Having too many global variables can cause problems in a program. Scope pollution is when we have too many global variables that exist in the global namespace. Scope pollution makes it difficult to keep track of our different variables and sets up potential accidents.
