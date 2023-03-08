@@ -859,4 +859,159 @@ document.getElementsByTagName('ELEMENT-TYPE')
 //.getElementsByClassName and .getElementsByTagName both return an array-like collection of elements. To access individual elements you have to iterate over them.
 ```
 
+#### Modifying elements 
 
+We can modify an elements CSS styles using the .style DOM property. The syntax follows an element.style.property format with the property representing a CSS property. We can use the .style property to change color, backgroundColor, font-size, font-family etc.
+
+```
+let blueElement = document.querySelector(".blue");
+blueElement.style.backgroundColor = "blue";//CSS properties are written in camelcase rather than with a -(hyphen).
+```
+
+#### Traversing the DOM 
+
+Is finding HTML elements on their relation to other elements. In the DOM hierarchy parent and children relationships are defined in relation to the position of the root node. Traversing the DOM is more effecient than previous methods as you do not have to search the entire DOM for an element.
+
+```
+let itemList = document.querySelector('#items');
+console.log(itemList.parentNode);
+itemList.parentNode.style.backgroundColor = '#f4f4f4'; //changes the parent node.
+```
+
+childNodes are usually not worth using as it lists text(whitespace) in the nodelist along with the childNodes.
+
+```
+console.log(itemList.childNodes);
+```
+
+Children only lists the elements and in a HTML collection instead of in a node list.
+
+```
+console.log(itemList.children);
+console.log(itemList.children[1]);//To select a single element.
+itemList.children[1].style.backgroundColor = 'yellow';
+```
+
+We can use firstChild/lastChild to get the first and last elements like the childNodes this includes text(whitespace).
+
+```
+console.log(itemList.firstChild);
+```
+
+However firstElementChild/lastELementChild is the better method as it only list elements not text(whitespace).
+
+```
+console.log(itemList.firstElementChild);
+itemList.firstELementChild[1].style.color = 'blue';
+```
+
+nextSibling/previousSibling returns the next sibling of the current node or null if there are non includes text(whitespace)
+
+```
+console.log(itemList[0].nextSibling);
+```
+
+nextElementSibling/previousElementSibiling choses the next sibling or the previous sibling Siblings are elements who share the same parent.
+
+```
+console.log(itemList[0].nextElementSibling);
+```
+
+### Creating Elements and Inserting them
+
+Just as the DOM allows us to modify existing elements it also allows for the creation of new ones.
+The .createElement(tagName) method creates a new element based on the specified tag name passed into it as an argument. We can assign classes, id's, text, attributes etc to a new element. We can then assign a newly created element in JavaScript to the DOM.
+
+Creating and inserting elements into the DOM - createElement this only creates the element to add it to the webpage we have to append it or use the insertBefore or appendChild method.
+
+```
+let newDiv = document.createElement('div');
+
+//add class
+newDiv.className = 'new-div-class';
+
+//add id
+newDiv.id = 'new-div-id';
+
+//add attribute
+newDiv.setAttribute('title','New Div');
+
+//create text node
+let newDivText = document.createTextNode('Hello World');
+
+//add text to div
+newDiv.appendChild(newDivText);
+
+//Adding div made in JavaScript to the DOM
+
+let container = document.querySelector('header .container');
+let h1 = document.querySelector('header h1');
+
+container.insertBefore(newDiv, h1);//takes two parameters what we are inserting and what we are inserting before
+
+console.log(newDiv);
+
+//We can remove an element from the DOM using the removeChild method.
+parentNode.removeChild(div);
+```
+
+### Events 
+
+You can add interactivity to DOM events by assigning a function to run based on an event. Events are user interactions and browser manipulations such as a page loading, a mouse click, a keyboard input etc.
+When a user does any of these actions they are causing the event to be fired or be triggered.
+After a specifc event fires on a specific element in the DOM an event handler function can be created to run as a response.
+
+.onclick property allows you to assign a function to run on a click event on an element.
+
+```
+const button = document.getElementById("button");
+button.onclick = function() {button.style.backgroundColor = "blue"};
+```
+
+.addEventListener() - method sets up a function that will be called whenever the specified event is delivered to the target. The DOM element that listens for the event is called the event target and function that runs is called the event handler.
+
+```
+const eventTarget = document.getElementById("targetElement");
+
+eventTarget.addEventListener("click", function() {
+//this block of code will run when the click event happens on eventTarget element.
+});
+```
+
+.onevent - is another way to register an event handler to an event target. .onevent is a property that can be set on a DOM element. After the event target the on is followed by the lowercased event type name for instance onclick. Unlike the .addEventListener we can only attach one event handler function to the event target.
+
+```
+eventTarget.onclick = eventHandler;
+```
+
+.removeEventListener() - Is a method used to reverse the addEventListener() method. This method stops the event target from listening for an event to fire. .removeEventListener needs both the exact event type and the name of the event handler to work. If .addEventListener was provided an anonymous function then that event listener cannot be removed.
+
+```
+eventTarget.removeEventListener("click", eventHandler);
+```
+
+Event Object Properties
+JavaScript stores events as event objects with their related datd and functionalities as properties and methods. When an event is triggered, the event object can be passed as an argument to the event handler function.
+
+```
+function eventHandlerFunction(event){////When the click event is triggered the function will run and pass in the event object.
+  console.log(event.timeStamp);//The .timeStamp property will return the time when an event was triggered in miliseconds.
+}
+```
+
+Prevent default method cancels the events default action if it is cancelable. For example it will stop a submit button from submitting a form, clicking a link will prevent the link from following the url.
+
+```
+function runEvent(event) {
+    e.preventDefault();
+}
+
+eventTarget.addEventListener("click", eventHandlerFunction);
+```
+
+Some of the properties associated with event objects include...
+- target to reference the element that the event is registered to.
+- type to access the type of the event.
+- timeStamp to access when the event was triggered.
+
+Form Validation - is the process of checking the information submitted through a form adheres to expectations. Most data once submitted is stored in a databse or server side so it is important that the stored data is accurate. Unprotected forms can potentially allow for code injection this can leaves users data or even the site itself at risk. To specify patterns for the computer to recognize we use a special language called regular expressions or regex for short. A regular expression is a sequence of characters representing a pattern, we can use that pattern to match a string to confirm that data is formatted acceptably or even replace parts of strings with different characters. We can have front-end, client and backend validation.
